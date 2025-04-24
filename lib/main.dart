@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:freelance_task/order_details.dart';
+import 'package:freelance_task/order_details_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -8,13 +8,12 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      routes: {OrderDetails.routeName: (_) => const OrderDetails()},
-      initialRoute: OrderDetails.routeName,
+      routes: {OrderDetailsScreen.routeName: (_) => const OrderDetailsScreen()},
+      initialRoute: OrderDetailsScreen.routeName,
     );
   }
 }

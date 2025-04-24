@@ -2,8 +2,8 @@ class ItemInfoModel {
   String name;
   String color;
   String size;
-  String units;
-  String price;
+  int units;
+  double price;
   String? imageUrl;
   ItemInfoModel({
     required this.name,

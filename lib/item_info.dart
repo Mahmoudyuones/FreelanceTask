@@ -38,97 +38,104 @@ class ItemInfo extends StatelessWidget {
 
           SizedBox(width: width * .05),
 
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                itemInfo.name,
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 18,
-                  fontFamily: 'Poppins',
+          Expanded(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      itemInfo.name,
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 16,
+                        fontFamily: 'Poppins',
+                      ),
+                    ),
+                    Row(
+                      children: [
+                        Text(
+                          'Color : ',
+                          style: TextStyle(
+                            fontWeight: FontWeight.w400,
+                            fontSize: 14,
+                            fontFamily: 'Poppins',
+                            color: Colors.grey.shade600,
+                          ),
+                        ),
+                        Text(
+                          itemInfo.color,
+                          style: TextStyle(
+                            fontWeight: FontWeight.w400,
+                            fontSize: 14,
+                            fontFamily: 'Poppins',
+                          ),
+                        ),
+                      ],
+                    ),
+                    Row(
+                      children: [
+                        Text(
+                          'Units : ',
+                          style: TextStyle(
+                            color: Colors.grey.shade600,
+                            fontWeight: FontWeight.w400,
+                            fontSize: 14,
+                            fontFamily: 'Poppins',
+                          ),
+                        ),
+                        Text(
+                          itemInfo.units.toString(),
+                          style: TextStyle(
+                            fontWeight: FontWeight.w400,
+                            fontSize: 14,
+                            fontFamily: 'Poppins',
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
                 ),
-              ),
-              Row(
-                children: [
-                  Text(
-                    'Color : ',
-                    style: TextStyle(
-                      fontWeight: FontWeight.w400,
-                      fontSize: 18,
-                      fontFamily: 'Poppins',
-                      color: Colors.grey.shade600,
-                    ),
-                  ),
-                  Text(
-                    itemInfo.color,
-                    style: TextStyle(
-                      fontWeight: FontWeight.w400,
-                      fontSize: 18,
-                      fontFamily: 'Poppins',
-                    ),
-                  ),
-                ],
-              ),
-              Row(
-                children: [
-                  Text(
-                    'Units : ',
-                    style: TextStyle(
-                      color: Colors.grey.shade600,
-                      fontWeight: FontWeight.w400,
-                      fontSize: 16,
-                      fontFamily: 'Poppins',
-                    ),
-                  ),
-                  Text(
-                    itemInfo.units,
-                    style: TextStyle(
-                      fontWeight: FontWeight.w400,
-                      fontSize: 16,
-                      fontFamily: 'Poppins',
-                    ),
-                  ),
-                ],
-              ),
-            ],
-          ),
-          SizedBox(width: width * .1),
-          Column(
-            children: [
-              SizedBox(height: width * .07),
-              Row(
-                children: [
-                  Text(
-                    'Size : ',
-                    style: TextStyle(
-                      color: Colors.grey.shade600,
 
-                      fontWeight: FontWeight.w400,
-                      fontSize: 16,
-                      fontFamily: 'Poppins',
-                    ),
-                  ),
-                  Text(
-                    itemInfo.size,
-                    style: TextStyle(
-                      fontWeight: FontWeight.w400,
-                      fontSize: 16,
-                      fontFamily: 'Poppins',
-                    ),
-                  ),
-                ],
-              ),
+                Column(
+                  children: [
+                    SizedBox(height: width * .06),
+                    Row(
+                      children: [
+                        Text(
+                          'Size : ',
+                          style: TextStyle(
+                            color: Colors.grey.shade600,
 
-              Text(
-                itemInfo.price,
-                style: TextStyle(
-                  fontWeight: FontWeight.w500,
-                  fontSize: 18,
-                  fontFamily: 'Poppins',
+                            fontWeight: FontWeight.w400,
+                            fontSize: 14,
+                            fontFamily: 'Poppins',
+                          ),
+                        ),
+                        Text(
+                          itemInfo.size,
+                          style: TextStyle(
+                            fontWeight: FontWeight.w400,
+                            fontSize: 14,
+                            fontFamily: 'Poppins',
+                          ),
+                        ),
+                      ],
+                    ),
+
+                    Text(
+                      "${itemInfo.price.toString()} EGP",
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 14,
+                        fontFamily: 'Poppins',
+                      ),
+                    ),
+                  ],
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ],
       ),

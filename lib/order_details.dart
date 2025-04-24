@@ -1,67 +1,133 @@
 import 'package:flutter/material.dart';
+import 'package:freelance_task/default_eleveted_botton.dart';
 import 'package:freelance_task/item_info.dart';
 import 'package:freelance_task/item_info_model.dart';
 import 'package:freelance_task/order_info.dart';
 import 'package:freelance_task/order_info_model.dart';
+import 'package:intl/intl.dart';
 
 class OrderDetails extends StatelessWidget {
-  static const String routeName = '/orderDetails';
-  const OrderDetails({super.key});
-
+  OrderDetails({super.key, required this.orderInfoModel});
+  final DateFormat dateFormat = DateFormat('dd/MM/yyyy');
+  final OrderInfoModel orderInfoModel;
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          'Order Details',
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-            fontSize: 18,
-            fontFamily: 'Poppins',
-            color: Colors.black,
+    double hight = MediaQuery.of(context).size.height;
+    return Padding(
+      padding: const EdgeInsets.all(15),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                'Order No : ${orderInfoModel.orderNo}',
+                style: TextStyle(
+                  fontWeight: FontWeight.w700,
+                  fontSize: 16,
+                  fontFamily: 'Poppins',
+                  color: Colors.black,
+                ),
+              ),
+              Text(
+                dateFormat.format(orderInfoModel.orderDate),
+                style: TextStyle(
+                  fontWeight: FontWeight.w500,
+                  fontSize: 16,
+                  fontFamily: 'Poppins',
+                  color: Colors.grey.shade600,
+                ),
+              ),
+            ],
           ),
-        ),
-        backgroundColor: Colors.transparent,
-        centerTitle: true,
-      ),
-      backgroundColor: Colors.grey.shade300,
-      body: Padding(
-        padding: const EdgeInsets.all(15),
-        child: Column(
-          children: [
-            Expanded(
+          SizedBox(height: hight * .01),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Row(
+                children: [
+                  Text(
+                    'Tracking number : ',
+                    style: TextStyle(
+                      fontWeight: FontWeight.w500,
+                      fontSize: 16,
+                      fontFamily: 'Poppins',
+                      color: Colors.grey.shade600,
+                    ),
+                  ),
+                  Text(
+                    orderInfoModel.trackingNo,
+                    style: TextStyle(
+                      fontWeight: FontWeight.w500,
+                      fontSize: 16,
+                      fontFamily: 'Poppins',
+                      color: Colors.black,
+                    ),
+                  ),
+                ],
+              ),
+              Text(
+                orderInfoModel.orderStatus,
+                style: TextStyle(
+                  fontWeight: FontWeight.w500,
+                  fontSize: 16,
+                  fontFamily: 'Poppins',
+                  color:
+                      orderInfoModel.orderStatus.toLowerCase() == 'delivered'
+                          ? Colors.green
+                          : Colors.black,
+                ),
+              ),
+            ],
+          ),
+          SizedBox(height: hight * .01),
+          Text(
+            '${orderInfoModel.itemInfoList.length} Items',
+            style: TextStyle(
+              fontWeight: FontWeight.w500,
+              fontSize: 16,
+              fontFamily: 'Poppins',
+              color: Colors.black,
+            ),
+          ),
+          Expanded(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(vertical: 8),
               child: ListView.builder(
-                itemBuilder: (context, index) {
+                itemBuilder: (_, index) {
+                  ItemInfoModel itemInfoModel =
+                      orderInfoModel.itemInfoList[index];
                   return Padding(
                     padding: const EdgeInsets.only(bottom: 8),
-                    child: ItemInfo(
-                      itemInfo: ItemInfoModel(
-                        name: 'Pullover',
-                        color: 'black',
-                        size: 'M',
-                        units: "1",
-                        price: "150 EGP ",
-                        imageUrl:
-                            'https://imgs.search.brave.com/SlqZRbGSjfNShpsX24qYcRjA1P9JckY9z8ahRPtyq40/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9iZXlv/bmR5b2dhLmNvbS9j/ZG4vc2hvcC9maWxl/cy9OSDc4NjFfd29v/ZGxhbmRfMzA0MTYu/anBnP3Y9MTc0MTcy/MTc1NSZ3aWR0aD0x/OTIw',
-                      ),
-                    ),
+                    child: ItemInfo(itemInfo: itemInfoModel),
                   );
                 },
-                itemCount: 3,
+                itemCount: orderInfoModel.itemInfoList.length,
               ),
             ),
+          ),
 
-            OrderInfo(
-              orderInfo: OrderInfoModel(
-                address: 'Sohag',
-                discount: 15,
-                shippingFee: 30,
-                totalPrice: 500,
-                paymentOnDelivery: 10,
+          OrderInfo(orderInfo: orderInfoModel),
+          SizedBox(height: hight * .03),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              DefaultElevetedBotton(
+                bacgroundColor: Color(0xFFAA7A24),
+                forroundColor: Colors.white,
+                text: 'Reorder',
+                hasBorder: false,
               ),
-            ),
-          ],
-        ),
+              DefaultElevetedBotton(
+                text: 'Leave Feedback',
+                bacgroundColor: Colors.grey.shade300,
+                forroundColor: Colors.black,
+                hasBorder: true,
+              ),
+            ],
+          ),
+        ],
       ),
     );
   }
