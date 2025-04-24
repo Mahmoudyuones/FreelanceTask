@@ -94,16 +94,36 @@ class OrderDetails extends StatelessWidget {
           Expanded(
             child: Padding(
               padding: const EdgeInsets.symmetric(vertical: 8),
-              child: ListView.builder(
-                itemBuilder: (_, index) {
-                  ItemInfoModel itemInfoModel =
-                      orderInfoModel.itemInfoList[index];
-                  return Padding(
-                    padding: const EdgeInsets.only(bottom: 8),
-                    child: ItemInfo(itemInfo: itemInfoModel),
-                  );
+              child: LayoutBuilder(
+                builder: (context, constraints) {
+                  bool isTablet = constraints.maxWidth >= 600;
+                  if (isTablet) {
+                    return GridView.builder(
+                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 2,
+                        childAspectRatio: 2,
+                        mainAxisSpacing: 8,
+                        crossAxisSpacing: 8,
+                      ),
+                      itemCount: orderInfoModel.itemInfoList.length,
+                      itemBuilder: (_, index) {
+                        final item = orderInfoModel.itemInfoList[index];
+                        return ItemInfo(itemInfo: item);
+                      },
+                    );
+                  } else {
+                    return ListView.builder(
+                      itemCount: orderInfoModel.itemInfoList.length,
+                      itemBuilder: (_, index) {
+                        final item = orderInfoModel.itemInfoList[index];
+                        return Padding(
+                          padding: const EdgeInsets.only(bottom: 8),
+                          child: ItemInfo(itemInfo: item),
+                        );
+                      },
+                    );
+                  }
                 },
-                itemCount: orderInfoModel.itemInfoList.length,
               ),
             ),
           ),

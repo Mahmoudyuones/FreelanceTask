@@ -36,14 +36,12 @@ class ItemInfo extends StatelessWidget {
             ),
           ),
 
-          SizedBox(width: width * .05),
-
+          SizedBox(width: width * .02),
           Expanded(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                Row(
                   children: [
                     Text(
                       itemInfo.name,
@@ -53,6 +51,11 @@ class ItemInfo extends StatelessWidget {
                         fontFamily: 'Poppins',
                       ),
                     ),
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
                     Row(
                       children: [
                         Text(
@@ -77,33 +80,6 @@ class ItemInfo extends StatelessWidget {
                     Row(
                       children: [
                         Text(
-                          'Units : ',
-                          style: TextStyle(
-                            color: Colors.grey.shade600,
-                            fontWeight: FontWeight.w400,
-                            fontSize: 14,
-                            fontFamily: 'Poppins',
-                          ),
-                        ),
-                        Text(
-                          itemInfo.units.toString(),
-                          style: TextStyle(
-                            fontWeight: FontWeight.w400,
-                            fontSize: 14,
-                            fontFamily: 'Poppins',
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-
-                Column(
-                  children: [
-                    SizedBox(height: width * .06),
-                    Row(
-                      children: [
-                        Text(
                           'Size : ',
                           style: TextStyle(
                             color: Colors.grey.shade600,
@@ -123,7 +99,32 @@ class ItemInfo extends StatelessWidget {
                         ),
                       ],
                     ),
-
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Row(
+                      children: [
+                        Text(
+                          'Units : ',
+                          style: TextStyle(
+                            color: Colors.grey.shade600,
+                            fontWeight: FontWeight.w400,
+                            fontSize: 14,
+                            fontFamily: 'Poppins',
+                          ),
+                        ),
+                        Text(
+                          itemInfo.units.toString(),
+                          style: TextStyle(
+                            fontWeight: FontWeight.w400,
+                            fontSize: 14,
+                            fontFamily: 'Poppins',
+                          ),
+                        ),
+                      ],
+                    ),
                     Text(
                       "${itemInfo.price.toString()} EGP",
                       style: TextStyle(
@@ -142,3 +143,32 @@ class ItemInfo extends StatelessWidget {
     );
   }
 }
+
+          // Expanded(
+          //   child: Row(
+          //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          //     children: [
+          //       Column(
+          //         crossAxisAlignment: CrossAxisAlignment.start,
+          //         children: [
+                 
+          //           Row(
+          //             children: [
+                       
+          //             ],
+          //           ),
+                    
+          //         ],
+          //       ),
+
+          //       Column(
+          //         children: [
+          //           SizedBox(height: width * .06),
+        
+
+                    
+          //         ],
+          //       ),
+          //     ],
+          //   ),
+          // ),
