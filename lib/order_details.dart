@@ -1,7 +1,9 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:freelance_task/default_eleveted_botton.dart';
 import 'package:freelance_task/item_info.dart';
-import 'package:freelance_task/item_info_model.dart';
 import 'package:freelance_task/order_info.dart';
 import 'package:freelance_task/order_info_model.dart';
 import 'package:intl/intl.dart';
@@ -12,9 +14,8 @@ class OrderDetails extends StatelessWidget {
   final OrderInfoModel orderInfoModel;
   @override
   Widget build(BuildContext context) {
-    double hight = MediaQuery.of(context).size.height;
     return Padding(
-      padding: const EdgeInsets.all(15),
+      padding: EdgeInsets.all(15.h),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -41,7 +42,7 @@ class OrderDetails extends StatelessWidget {
               ),
             ],
           ),
-          SizedBox(height: hight * .01),
+          SizedBox(height: 9.h),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -51,7 +52,7 @@ class OrderDetails extends StatelessWidget {
                     'Tracking number : ',
                     style: TextStyle(
                       fontWeight: FontWeight.w500,
-                      fontSize: 16,
+                      fontSize: min(16.sp, 20),
                       fontFamily: 'Poppins',
                       color: Colors.grey.shade600,
                     ),
@@ -81,12 +82,12 @@ class OrderDetails extends StatelessWidget {
               ),
             ],
           ),
-          SizedBox(height: hight * .01),
+          SizedBox(height: 9.h),
           Text(
             '${orderInfoModel.itemInfoList.length} Items',
             style: TextStyle(
               fontWeight: FontWeight.w500,
-              fontSize: 16,
+              fontSize: min(16.sp, 20),
               fontFamily: 'Poppins',
               color: Colors.black,
             ),
@@ -102,8 +103,8 @@ class OrderDetails extends StatelessWidget {
                       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 2,
                         childAspectRatio: 2,
-                        mainAxisSpacing: 8,
-                        crossAxisSpacing: 8,
+                        mainAxisSpacing: 8.w,
+                        crossAxisSpacing: 8.w,
                       ),
                       itemCount: orderInfoModel.itemInfoList.length,
                       itemBuilder: (_, index) {
@@ -129,7 +130,7 @@ class OrderDetails extends StatelessWidget {
           ),
 
           OrderInfo(orderInfo: orderInfoModel),
-          SizedBox(height: hight * .03),
+          SizedBox(height: 27.h),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -138,12 +139,14 @@ class OrderDetails extends StatelessWidget {
                 forroundColor: Colors.white,
                 text: 'Reorder',
                 hasBorder: false,
+                onPressed: reOrder,
               ),
               DefaultElevetedBotton(
                 text: 'Leave Feedback',
                 bacgroundColor: Colors.grey.shade300,
                 forroundColor: Colors.black,
                 hasBorder: true,
+                onPressed: leaveFeedback,
               ),
             ],
           ),
@@ -151,4 +154,7 @@ class OrderDetails extends StatelessWidget {
       ),
     );
   }
+
+  void reOrder() {}
+  void leaveFeedback() {}
 }

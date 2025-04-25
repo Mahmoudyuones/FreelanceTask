@@ -1,5 +1,7 @@
+import 'dart:math';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:freelance_task/loading_indecator.dart';
 import 'package:freelance_task/item_info_model.dart';
 
@@ -8,18 +10,17 @@ class ItemInfo extends StatelessWidget {
   final ItemInfoModel itemInfo;
   @override
   Widget build(BuildContext context) {
-    double width = MediaQuery.of(context).size.width;
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(12),
         color: Colors.white,
       ),
-      padding: const EdgeInsets.all(8.0),
+      padding: EdgeInsets.all(8.h),
       child: Row(
         children: [
           SizedBox(
-            width: width * .25,
-            height: width * .25,
+            width: 100.w,
+            height: 100.w,
 
             child: ClipRRect(
               borderRadius: BorderRadius.circular(12),
@@ -36,7 +37,7 @@ class ItemInfo extends StatelessWidget {
             ),
           ),
 
-          SizedBox(width: width * .02),
+          SizedBox(width: 4.w),
           Expanded(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -47,7 +48,7 @@ class ItemInfo extends StatelessWidget {
                       itemInfo.name,
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
-                        fontSize: 16,
+                        fontSize: min(16.sp, 18),
                         fontFamily: 'Poppins',
                       ),
                     ),
@@ -59,10 +60,10 @@ class ItemInfo extends StatelessWidget {
                     Row(
                       children: [
                         Text(
-                          'Color : ',
+                          'Color: ',
                           style: TextStyle(
                             fontWeight: FontWeight.w400,
-                            fontSize: 14,
+                            fontSize: min(14.sp, 18),
                             fontFamily: 'Poppins',
                             color: Colors.grey.shade600,
                           ),
@@ -71,7 +72,7 @@ class ItemInfo extends StatelessWidget {
                           itemInfo.color,
                           style: TextStyle(
                             fontWeight: FontWeight.w400,
-                            fontSize: 14,
+                            fontSize: min(14.sp, 18),
                             fontFamily: 'Poppins',
                           ),
                         ),
@@ -80,12 +81,12 @@ class ItemInfo extends StatelessWidget {
                     Row(
                       children: [
                         Text(
-                          'Size : ',
+                          'Size:',
                           style: TextStyle(
                             color: Colors.grey.shade600,
 
                             fontWeight: FontWeight.w400,
-                            fontSize: 14,
+                            fontSize: min(14.sp, 18),
                             fontFamily: 'Poppins',
                           ),
                         ),
@@ -93,7 +94,7 @@ class ItemInfo extends StatelessWidget {
                           itemInfo.size,
                           style: TextStyle(
                             fontWeight: FontWeight.w400,
-                            fontSize: 14,
+                            fontSize: min(14.sp, 18),
                             fontFamily: 'Poppins',
                           ),
                         ),
@@ -107,11 +108,11 @@ class ItemInfo extends StatelessWidget {
                     Row(
                       children: [
                         Text(
-                          'Units : ',
+                          'Units:',
                           style: TextStyle(
                             color: Colors.grey.shade600,
                             fontWeight: FontWeight.w400,
-                            fontSize: 14,
+                            fontSize: min(14.sp, 18),
                             fontFamily: 'Poppins',
                           ),
                         ),
@@ -119,7 +120,7 @@ class ItemInfo extends StatelessWidget {
                           itemInfo.units.toString(),
                           style: TextStyle(
                             fontWeight: FontWeight.w400,
-                            fontSize: 14,
+                            fontSize: min(14.sp, 18),
                             fontFamily: 'Poppins',
                           ),
                         ),
@@ -129,7 +130,7 @@ class ItemInfo extends StatelessWidget {
                       "${itemInfo.price.toString()} EGP",
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
-                        fontSize: 14,
+                        fontSize: min(14.sp, 18),
                         fontFamily: 'Poppins',
                       ),
                     ),
@@ -143,32 +144,3 @@ class ItemInfo extends StatelessWidget {
     );
   }
 }
-
-          // Expanded(
-          //   child: Row(
-          //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          //     children: [
-          //       Column(
-          //         crossAxisAlignment: CrossAxisAlignment.start,
-          //         children: [
-                 
-          //           Row(
-          //             children: [
-                       
-          //             ],
-          //           ),
-                    
-          //         ],
-          //       ),
-
-          //       Column(
-          //         children: [
-          //           SizedBox(height: width * .06),
-        
-
-                    
-          //         ],
-          //       ),
-          //     ],
-          //   ),
-          // ),

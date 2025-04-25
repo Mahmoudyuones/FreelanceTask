@@ -1,4 +1,7 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:freelance_task/order_info_model.dart';
 
 class OrderInfo extends StatelessWidget {
@@ -6,7 +9,6 @@ class OrderInfo extends StatelessWidget {
   final OrderInfoModel orderInfo;
   @override
   Widget build(BuildContext context) {
-    double hight = MediaQuery.of(context).size.height;
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(12),
@@ -26,7 +28,7 @@ class OrderInfo extends StatelessWidget {
                       'Order Info',
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
-                        fontSize: 18,
+                        fontSize: min(18.sp, 20),
                         fontFamily: 'Poppins',
                       ),
                     ),
@@ -34,7 +36,7 @@ class OrderInfo extends StatelessWidget {
                       'shipping address',
                       style: TextStyle(
                         fontWeight: FontWeight.w400,
-                        fontSize: 14,
+                        fontSize: min(14.sp, 20),
                         fontFamily: 'Poppins',
                         color: Colors.grey.shade600,
                       ),
@@ -43,7 +45,7 @@ class OrderInfo extends StatelessWidget {
                       'discount',
                       style: TextStyle(
                         fontWeight: FontWeight.w400,
-                        fontSize: 14,
+                        fontSize: min(14.sp, 20),
                         fontFamily: 'Poppins',
                         color: Colors.grey.shade600,
                       ),
@@ -52,7 +54,7 @@ class OrderInfo extends StatelessWidget {
                       'Payment on delivery',
                       style: TextStyle(
                         fontWeight: FontWeight.w400,
-                        fontSize: 14,
+                        fontSize: min(14.sp, 20),
                         fontFamily: 'Poppins',
                         color: Colors.grey.shade600,
                       ),
@@ -61,7 +63,7 @@ class OrderInfo extends StatelessWidget {
                       'shipping fee',
                       style: TextStyle(
                         fontWeight: FontWeight.w400,
-                        fontSize: 14,
+                        fontSize: min(14.sp, 20),
                         fontFamily: 'Poppins',
                         color: Colors.grey.shade600,
                       ),
@@ -70,14 +72,14 @@ class OrderInfo extends StatelessWidget {
                 ),
 
                 Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
-                    SizedBox(height: hight * .03),
+                    SizedBox(height: 27.h),
                     Text(
                       orderInfo.address,
                       style: TextStyle(
                         fontWeight: FontWeight.w400,
-                        fontSize: 14,
+                        fontSize: min(14.sp, 20),
                         fontFamily: 'Poppins',
                         color: Colors.grey.shade600,
                       ),
@@ -86,7 +88,7 @@ class OrderInfo extends StatelessWidget {
                       '${orderInfo.discount.toString()} %',
                       style: TextStyle(
                         fontWeight: FontWeight.w400,
-                        fontSize: 14,
+                        fontSize: min(14.sp, 20),
                         fontFamily: 'Poppins',
                         color: Colors.grey.shade600,
                       ),
@@ -95,7 +97,7 @@ class OrderInfo extends StatelessWidget {
                       orderInfo.paymentOnDelivery.toString(),
                       style: TextStyle(
                         fontWeight: FontWeight.w400,
-                        fontSize: 14,
+                        fontSize: min(14.sp, 20),
                         fontFamily: 'Poppins',
                         color: Colors.grey.shade600,
                       ),
@@ -104,7 +106,7 @@ class OrderInfo extends StatelessWidget {
                       orderInfo.shippingFee.toString(),
                       style: TextStyle(
                         fontWeight: FontWeight.w400,
-                        fontSize: 14,
+                        fontSize: min(14.sp, 20),
                         fontFamily: 'Poppins',
                         color: Colors.grey.shade600,
                       ),
@@ -121,7 +123,7 @@ class OrderInfo extends StatelessWidget {
                   'Total',
                   style: TextStyle(
                     fontWeight: FontWeight.w800,
-                    fontSize: 16,
+                    fontSize: min(16.sp, 20),
                     fontFamily: 'Poppins',
                     color: Colors.black54,
                   ),
@@ -130,7 +132,7 @@ class OrderInfo extends StatelessWidget {
                   '${orderInfo.totalPrice.toString()} EGP',
                   style: TextStyle(
                     fontWeight: FontWeight.w400,
-                    fontSize: 18,
+                    fontSize: min(18.sp, 20),
                     fontFamily: 'Poppins',
                     color: Colors.grey.shade600,
                   ),

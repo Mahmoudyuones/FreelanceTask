@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'dart:math';
 import 'package:freelance_task/order_details.dart';
 import 'package:freelance_task/order_details_state.dart';
 import 'package:freelance_task/order_details_view_model.dart';
@@ -26,7 +27,7 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
           'Order Details',
           style: TextStyle(
             fontWeight: FontWeight.bold,
-            fontSize: 14,
+            fontSize: min(14.sp, 20),
             fontFamily: 'Poppins',
             color: Colors.black,
           ),

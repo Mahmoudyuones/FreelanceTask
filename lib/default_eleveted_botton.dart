@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class DefaultElevetedBotton extends StatelessWidget {
   const DefaultElevetedBotton({
@@ -7,18 +8,20 @@ class DefaultElevetedBotton extends StatelessWidget {
     required this.forroundColor,
     required this.text,
     required this.hasBorder,
+    required this.onPressed,
   });
   final Color bacgroundColor;
   final Color forroundColor;
   final String text;
   final bool hasBorder;
+  final void Function() onPressed;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: MediaQuery.sizeOf(context).width * .44,
-      height: MediaQuery.sizeOf(context).height * .05,
+      width: 181.w,
+      height: 44.h,
       child: ElevatedButton(
-        onPressed: () {},
+        onPressed: onPressed,
         style: ElevatedButton.styleFrom(
           backgroundColor: bacgroundColor,
           foregroundColor: Colors.white,
