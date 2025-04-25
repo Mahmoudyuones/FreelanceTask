@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:freelance_task/app_text.dart';
 import 'package:freelance_task/default_eleveted_botton.dart';
 import 'package:freelance_task/item_info.dart';
 import 'package:freelance_task/order_info.dart';
@@ -9,8 +10,8 @@ import 'package:freelance_task/order_info_model.dart';
 import 'package:intl/intl.dart';
 
 class OrderDetails extends StatelessWidget {
-  OrderDetails({super.key, required this.orderInfoModel});
-  final DateFormat dateFormat = DateFormat('dd/MM/yyyy');
+  const OrderDetails({super.key, required this.orderInfoModel});
+
   final OrderInfoModel orderInfoModel;
   @override
   Widget build(BuildContext context) {
@@ -24,21 +25,11 @@ class OrderDetails extends StatelessWidget {
             children: [
               Text(
                 'Order No : ${orderInfoModel.orderNo}',
-                style: TextStyle(
-                  fontWeight: FontWeight.w700,
-                  fontSize: 16,
-                  fontFamily: 'Poppins',
-                  color: Colors.black,
-                ),
+                style: AppTextStyles.title.copyWith(fontSize: min(16.sp, 20)),
               ),
               Text(
-                dateFormat.format(orderInfoModel.orderDate),
-                style: TextStyle(
-                  fontWeight: FontWeight.w500,
-                  fontSize: 16,
-                  fontFamily: 'Poppins',
-                  color: Colors.grey.shade600,
-                ),
+                DateFormat('dd/MM/yyyy').format(orderInfoModel.orderDate),
+                style: AppTextStyles.title.copyWith(fontSize: min(16.sp, 20)),
               ),
             ],
           ),
@@ -50,34 +41,28 @@ class OrderDetails extends StatelessWidget {
                 children: [
                   Text(
                     'Tracking number : ',
-                    style: TextStyle(
-                      fontWeight: FontWeight.w500,
+                    style: AppTextStyles.title.copyWith(
                       fontSize: min(16.sp, 20),
-                      fontFamily: 'Poppins',
+                      fontWeight: FontWeight.w500,
                       color: Colors.grey.shade600,
                     ),
                   ),
                   Text(
                     orderInfoModel.trackingNo,
-                    style: TextStyle(
+                    style: AppTextStyles.title.copyWith(
                       fontWeight: FontWeight.w500,
-                      fontSize: 16,
-                      fontFamily: 'Poppins',
-                      color: Colors.black,
                     ),
                   ),
                 ],
               ),
               Text(
                 orderInfoModel.orderStatus,
-                style: TextStyle(
-                  fontWeight: FontWeight.w500,
-                  fontSize: 16,
-                  fontFamily: 'Poppins',
+                style: AppTextStyles.title.copyWith(
                   color:
                       orderInfoModel.orderStatus.toLowerCase() == 'delivered'
                           ? Colors.green
                           : Colors.black,
+                  fontSize: min(16.sp, 20),
                 ),
               ),
             ],
@@ -85,11 +70,9 @@ class OrderDetails extends StatelessWidget {
           SizedBox(height: 9.h),
           Text(
             '${orderInfoModel.itemInfoList.length} Items',
-            style: TextStyle(
+            style: AppTextStyles.title.copyWith(
               fontWeight: FontWeight.w500,
               fontSize: min(16.sp, 20),
-              fontFamily: 'Poppins',
-              color: Colors.black,
             ),
           ),
           Expanded(
@@ -98,7 +81,10 @@ class OrderDetails extends StatelessWidget {
               child: LayoutBuilder(
                 builder: (context, constraints) {
                   bool isTablet = constraints.maxWidth >= 600;
-                  if (isTablet) {
+                  bool isportait =
+                      MediaQuery.of(context).orientation ==
+                      Orientation.portrait;
+                  if (isTablet && !isportait) {
                     return GridView.builder(
                       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 2,
@@ -132,11 +118,11 @@ class OrderDetails extends StatelessWidget {
           OrderInfo(orderInfo: orderInfoModel),
           SizedBox(height: 27.h),
           Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               DefaultElevetedBotton(
                 bacgroundColor: Color(0xFFAA7A24),
-                forroundColor: Colors.white,
+                forgroundColor: Colors.white,
                 text: 'Reorder',
                 hasBorder: false,
                 onPressed: reOrder,
@@ -144,7 +130,7 @@ class OrderDetails extends StatelessWidget {
               DefaultElevetedBotton(
                 text: 'Leave Feedback',
                 bacgroundColor: Colors.grey.shade300,
-                forroundColor: Colors.black,
+                forgroundColor: Colors.black,
                 hasBorder: true,
                 onPressed: leaveFeedback,
               ),

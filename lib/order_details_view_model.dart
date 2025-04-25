@@ -8,20 +8,20 @@ import 'package:freelance_task/server_locator.dart';
 class OrderDetailsViewModel extends Cubit<OrderDetailsState> {
   OrderDetailsViewModel() : super(OrderDetailsInitial()) {
     repo = OrderDetailsRepo(ServerLocator.orderDetailsDataSourc);
+    getOrderDetails();
   }
   late final OrderDetailsRepo repo;
-  void getOrderDetails() {
+  void getOrderDetails() async {
     emit(OrderDetailsLoading(orderInfoModel));
-    try {
-      final OrderInfoModel orderDetails = repo.getOrderinf();
-      if (orderDetails.itemInfoList.isEmpty) {
-        emit(OrderDetailsEmpty("No data found"));
-      } else {
-        emit(OrderDetailsSucces(orderDetails));
-      }
-    } catch (e) {
-      emit(OrderDetailsError(e.toString()));
-    }
+    final result = await repo.getOrderinf();
+    result.fold(
+      (failure) {
+        emit(OrderDetailsError(failure.message));
+      },
+      (orderInfoModel) {
+        emit(OrderDetailsSucces(orderInfoModel));
+      },
+    );
   }
 
   OrderInfoModel orderInfoModel = OrderInfoModel(

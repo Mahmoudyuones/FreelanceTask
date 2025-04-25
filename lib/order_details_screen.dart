@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:freelance_task/app_text.dart';
 import 'dart:math';
 import 'package:freelance_task/order_details.dart';
 import 'package:freelance_task/order_details_state.dart';
@@ -25,11 +26,9 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
       appBar: AppBar(
         title: Text(
           'Order Details',
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-            fontSize: min(14.sp, 20),
-            fontFamily: 'Poppins',
+          style: AppTextStyles.title.copyWith(
             color: Colors.black,
+            fontSize: min(14.sp, 20),
           ),
         ),
         backgroundColor: Colors.transparent,
@@ -38,7 +37,6 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
 
       body: BlocProvider(
         create: (_) {
-          viewModel.getOrderDetails();
           return viewModel;
         },
         child: BlocBuilder<OrderDetailsViewModel, OrderDetailsState>(

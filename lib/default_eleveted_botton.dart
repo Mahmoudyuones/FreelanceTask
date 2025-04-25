@@ -1,30 +1,30 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:freelance_task/app_text.dart';
 
 class DefaultElevetedBotton extends StatelessWidget {
   const DefaultElevetedBotton({
     super.key,
     required this.bacgroundColor,
-    required this.forroundColor,
+    required this.forgroundColor,
     required this.text,
     required this.hasBorder,
     required this.onPressed,
   });
   final Color bacgroundColor;
-  final Color forroundColor;
+  final Color forgroundColor;
   final String text;
   final bool hasBorder;
   final void Function() onPressed;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: 181.w,
-      height: 44.h,
+      width: 181,
+      height: 44,
       child: ElevatedButton(
         onPressed: onPressed,
         style: ElevatedButton.styleFrom(
           backgroundColor: bacgroundColor,
-          foregroundColor: Colors.white,
+          foregroundColor: forgroundColor,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(30),
             side:
@@ -36,11 +36,9 @@ class DefaultElevetedBotton extends StatelessWidget {
         child: Text(
           textAlign: TextAlign.center,
           text,
-          style: TextStyle(
+          style: AppTextStyles.title.copyWith(
+            color: forgroundColor,
             fontSize: 14,
-            fontFamily: 'Poppins',
-            color: forroundColor,
-            fontWeight: FontWeight.w700,
           ),
         ),
       ),

@@ -2,6 +2,7 @@ import 'dart:math';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:freelance_task/app_text.dart';
 import 'package:freelance_task/loading_indecator.dart';
 import 'package:freelance_task/item_info_model.dart';
 
@@ -46,10 +47,8 @@ class ItemInfo extends StatelessWidget {
                   children: [
                     Text(
                       itemInfo.name,
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
+                      style: AppTextStyles.title.copyWith(
                         fontSize: min(16.sp, 18),
-                        fontFamily: 'Poppins',
                       ),
                     ),
                   ],
@@ -61,43 +60,22 @@ class ItemInfo extends StatelessWidget {
                       children: [
                         Text(
                           'Color: ',
-                          style: TextStyle(
-                            fontWeight: FontWeight.w400,
-                            fontSize: min(14.sp, 18),
-                            fontFamily: 'Poppins',
-                            color: Colors.grey.shade600,
+                          style: AppTextStyles.title.copyWith(
+                            color: Colors.grey.shade500,
                           ),
                         ),
-                        Text(
-                          itemInfo.color,
-                          style: TextStyle(
-                            fontWeight: FontWeight.w400,
-                            fontSize: min(14.sp, 18),
-                            fontFamily: 'Poppins',
-                          ),
-                        ),
+                        Text(itemInfo.color, style: AppTextStyles.title),
                       ],
                     ),
                     Row(
                       children: [
                         Text(
                           'Size:',
-                          style: TextStyle(
-                            color: Colors.grey.shade600,
-
-                            fontWeight: FontWeight.w400,
-                            fontSize: min(14.sp, 18),
-                            fontFamily: 'Poppins',
+                          style: AppTextStyles.title.copyWith(
+                            color: Colors.grey.shade500,
                           ),
                         ),
-                        Text(
-                          itemInfo.size,
-                          style: TextStyle(
-                            fontWeight: FontWeight.w400,
-                            fontSize: min(14.sp, 18),
-                            fontFamily: 'Poppins',
-                          ),
-                        ),
+                        Text(itemInfo.size, style: AppTextStyles.title),
                       ],
                     ),
                   ],
@@ -109,30 +87,19 @@ class ItemInfo extends StatelessWidget {
                       children: [
                         Text(
                           'Units:',
-                          style: TextStyle(
-                            color: Colors.grey.shade600,
-                            fontWeight: FontWeight.w400,
-                            fontSize: min(14.sp, 18),
-                            fontFamily: 'Poppins',
+                          style: AppTextStyles.title.copyWith(
+                            color: Colors.grey.shade500,
                           ),
                         ),
                         Text(
                           itemInfo.units.toString(),
-                          style: TextStyle(
-                            fontWeight: FontWeight.w400,
-                            fontSize: min(14.sp, 18),
-                            fontFamily: 'Poppins',
-                          ),
+                          style: AppTextStyles.title,
                         ),
                       ],
                     ),
                     Text(
                       "${itemInfo.price.toString()} EGP",
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: min(14.sp, 18),
-                        fontFamily: 'Poppins',
-                      ),
+                      style: AppTextStyles.title,
                     ),
                   ],
                 ),
